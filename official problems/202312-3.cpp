@@ -8,11 +8,19 @@ typedef struct Node{
     int valid;
 }Node, *Tree;
 
+/**
+ * 计算二叉树中所有有效节点值的总和
+ * @param head 二叉树的根节点
+ * @param sum 用于存储总和的变量，通过引用传递
+ */
 void get_all_value(Tree head, int& sum){
+    // 如果当前节点为空或无效，则直接返回
     if(head == nullptr || head->valid == 0){
         return;
     }
+    // 将当前节点的值累加到总和中
     sum += head->value;
+    // 递归计算左子树的总和
     get_all_value(head->lchild, sum);
     get_all_value(head->rchild, sum);
 }
@@ -48,13 +56,23 @@ void delete_node(Tree head, Tree save){
     delete_node(head->rchild, save);
     head->valid = 0;
 }
-
+/**
+ * 判断二叉树中是否只剩下一个有效节点
+ * @param NodeList 二叉树的节点数组
+ * @param n 节点数组的长度
+ * @return 如果只剩下一个有效节点，返回true；否则返回false
+ */
 bool only_one(Tree NodeList, int n){
+    // 初始化计数器，用于统计有效节点的数量
     int sum = 0;
+    // 遍历节点数组
     for(int i = 1; i <= n; i++){
+        // 如果节点有效，计数器加1
         sum += NodeList[i].valid;
     }
+    // 如果计数器为1，说明只剩下一个有效节点，返回true
     if (sum == 1) return true;
+    // 否则返回false
     else return false;
 }
 
