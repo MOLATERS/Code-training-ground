@@ -16,14 +16,14 @@ using namespace std;
 
 // @lc code=start
 
-// struct TreeNode {
-//     int val;
-//     TreeNode *left;
-//     TreeNode *right;
-//     TreeNode() : val(0), left(nullptr), right(nullptr) {}
-//     TreeNode(int x) : val(x), left(nullptr), right(nullptr) {}
-//     TreeNode(int x, TreeNode *left, TreeNode *right) : val(x), left(left), right(right) {}
-// };
+struct TreeNode {
+    int val;
+    TreeNode *left;
+    TreeNode *right;
+    TreeNode() : val(0), left(nullptr), right(nullptr) {}
+    TreeNode(int x) : val(x), left(nullptr), right(nullptr) {}
+    TreeNode(int x, TreeNode *left, TreeNode *right) : val(x), left(left), right(right) {}
+};
 
 // 现在进行的更换操作都是在序列中有两个需要进行交换的结点，这两个结点不一定靠近，但是一定是有两处可能的异常位置上
 
