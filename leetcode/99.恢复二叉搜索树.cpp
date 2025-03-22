@@ -1,4 +1,5 @@
-// @before-stub-for-debug-begin
+/
+/ @before-stub-for-debug-begin
 #include <vector>
 #include <string>
 #include "commoncppproblem99.h"
