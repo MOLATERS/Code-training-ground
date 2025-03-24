@@ -1,55 +1,33 @@
-#include<stdio.h>
-#define N 40
-void ReadScore(int score[], int n)
+#include  <stdio.h>
+int IsDaffodilNum(int num);
+int main(void)
 {
-    int i;
-    for (i = 0; i < n; i++)
+    int n;
+    printf("Input n:");
+    scanf("%d", &n);
+    if (n % 3 != 0)
     {
-        scanf("%d", &score[i]);
+        printf("%d is not a daffodil number\n", n);
     }
-}
-void WriteScore(int score[], int n)
-{
-    int i;
-    for (i = 0; i < n; i++)
+    else if (IsDaffodilNum(n))
     {
-        printf("%d ", score[i]);
+        printf("%d is a daffodil number\n", n);
     }
+    return 0;
 }
-void Swap(int *x, int *y)
+//函数功能：验证n是黑洞数
+int IsDaffodilNum(int num)
 {
     int temp;
-    temp = *x;
-    *x = *y;
-    *y = temp;
-}
-void DataSort(int score[], int n)
-{
-    int i, j, k;
-    for (i = 0; i < n; i++)
+    printf("%d\n", num);
+    if(num == 153)
     {
-        k = i;
-        for (j = i + 1; j < n; j++)
-        {
-            if (score[j] > score[k])
-            {
-                k = j;
-            }
-        }
-        if (k != i)
-        {
-            Swap(&score[k], &score[i]);
-        }
+        return 1;
     }
-}
-int  main()
-{
-    int score[N], aver, n;
-    printf("Input n:\n");
-    scanf("%d", &n);
-    ReadScore(score, n);
-    WriteScore(score, n);
-    DataSort(score, n);
-    WriteScore(score, n);
-    return 0;
+    while(num != 0)
+    {
+        temp += (num % 10) * (num % 10) * (num % 10);
+        num /= 10;
+    }
+    return IsDaffodilNum(temp);
 }
