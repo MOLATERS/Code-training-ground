@@ -1,33 +1,40 @@
-#include  <stdio.h>
-int IsDaffodilNum(int num);
-int main(void)
+#include <stdio.h>
+#include <stdlib.h>
+struct book
 {
-    int n;
-    printf("Input n:");
-    scanf("%d", &n);
-    if (n % 3 != 0)
+    char name_of_book[100]; //书名
+    char author[25]; //作者
+    char ISBN[15];
+    float price;
+};
+struct book* sortBook(struct book* List, int n);
+
+int main()
+{
+    struct book List[100];
+    int i = 0;
+    printf("please input name_of_book author ISBN price:");
+    while(scanf("%s %s %s %f",List[i].name_of_book,List[i].author,List[i].ISBN,&List[i].price) == 4) i++;
+    sortBook(List,i);
+    for(int j = 0;  j < i; j++)
     {
-        printf("%d is not a daffodil number\n", n);
+        printf("%s,%s,%s,%.2f\n",List[j].name_of_book,List[j].author,List[j].ISBN,List[j].price);
     }
-    else if (IsDaffodilNum(n))
-    {
-        printf("%d is a daffodil number\n", n);
-    }
-    return 0;
 }
-//函数功能：验证n是黑洞数
-int IsDaffodilNum(int num)
+
+struct book* sortBook(struct book* List, int n)
 {
-    int temp;
-    printf("%d\n", num);
-    if(num == 153)
+    for(int i = 0; i < n - 1; i++)
     {
-        return 1;
+        for(int j = 0; j < n - i - 1; j++)
+        {
+            if(List[j].price < List[j+1].price)
+            {
+                struct book temp = List[j];
+                List[j] = List[j+1];
+                List[j+1] = temp;
+            }
+        }
     }
-    while(num != 0)
-    {
-        temp += (num % 10) * (num % 10) * (num % 10);
-        num /= 10;
-    }
-    return IsDaffodilNum(temp);
+    return List;
 }
